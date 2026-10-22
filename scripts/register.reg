@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; Register COM InprocServer32
+[HKEY_CLASSES_ROOT\CLSID\{3A4E2F6C-81D5-4F8A-9A8E-2B6C7D8E9F01}]
+@="Custom MFA Credential Provider"
+
+[HKEY_CLASSES_ROOT\CLSID\{3A4E2F6C-81D5-4F8A-9A8E-2B6C7D8E9F01}\InprocServer32]
+@="C:\\Windows\\System32\\CustomMfaCredentialProvider.dll"
+"ThreadingModel"="Apartment"
+
+; Register active Windows Credential Provider in LogonUI
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{3A4E2F6C-81D5-4F8A-9A8E-2B6C7D8E9F01}]
+@="CustomMfaCredentialProvider"
