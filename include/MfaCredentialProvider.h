@@ -3,7 +3,7 @@
 #include "common.h"
 #include "MfaCredential.h"
 
-class MfaCredentialProvider : public ICredentialProvider2 {
+class MfaCredentialProvider : public ICredentialProvider, public ICredentialProviderSetUserArray {
 public:
     MfaCredentialProvider();
     virtual ~MfaCredentialProvider();
@@ -23,7 +23,7 @@ public:
     IFACEMETHODIMP GetCredentialCount(DWORD* pdwCount, DWORD* pdwDefault, BOOL* pbAutoLogonWithDefault) override;
     IFACEMETHODIMP GetCredentialAt(DWORD dwIndex, ICredentialProviderCredential** ppcpc) override;
 
-    // ICredentialProvider2
+    // ICredentialProviderSetUserArray
     IFACEMETHODIMP SetUserArray(ICredentialProviderUserArray* users) override;
 
 private:

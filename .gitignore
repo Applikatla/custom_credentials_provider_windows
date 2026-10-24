@@ -1,0 +1,69 @@
+# ==============================================================================
+# Build & Binary Output Directories
+# ==============================================================================
+build/
+bin/
+out/
+lib/
+x64/
+x86/
+ARM/
+ARM64/
+[Dd]ebug/
+[Rr]elease/
+
+# Compiled Object & Binary Files
+*.obj
+*.o
+*.lib
+*.a
+*.exp
+*.dll
+*.exe
+*.dylib
+*.so
+
+# Debugging, Linking & Symbol Files
+*.pdb
+*.ilk
+*.idb
+*.ipdb
+*.iobj
+
+# CMake Generated Files
+CMakeFiles/
+CMakeScripts/
+CMakeCache.txt
+cmake_install.cmake
+CTestTestfile.cmake
+Makefile
+
+# Visual Studio & MSBuild Artifacts
+*.vcxproj.user
+*.sln.docstates
+*.suo
+*.user
+*.aps
+*.ncb
+*.opendb
+*.VC.db
+*.VC.opendb
+
+# IDE & Editor Configuration
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+
+# Temporary Diagnostic Scripts & Logs
+*.log
+*.tlog
+check_tools.bat
+
+# Windows OS Generated Files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/

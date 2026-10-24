@@ -19,7 +19,8 @@ enum FieldId {
     FIELD_COUNT = 8
 };
 
-class MfaCredential : public ICredentialProviderCredential2 {
+class MfaCredential : public ICredentialProviderCredential2,
+                      public ICredentialProviderCredentialWithFieldOptions {
 public:
     MfaCredential();
     virtual ~MfaCredential();
@@ -47,7 +48,6 @@ public:
     IFACEMETHODIMP CommandLinkClicked(DWORD dwFieldID) override;
     IFACEMETHODIMP GetSubmitButtonValue(DWORD dwFieldID, DWORD* pdwAdjacentTo) override;
     IFACEMETHODIMP GetBitmapValue(DWORD dwFieldID, HBITMAP* phbmp) override;
-    IFACEMETHODIMP GetFieldOptions(DWORD dwFieldID, CREDENTIAL_PROVIDER_CREDENTIAL_FIELD_OPTIONS* pOptions) override;
     IFACEMETHODIMP GetSerialization(CREDENTIAL_PROVIDER_GET_SERIALIZATION_RESPONSE* pcpgsr, 
                                     CREDENTIAL_PROVIDER_CREDENTIAL_SERIALIZATION* pcpcs, 
                                     PWSTR* ppszOptionalStatusText, 
@@ -59,6 +59,9 @@ public:
 
     // ICredentialProviderCredential2
     IFACEMETHODIMP GetUserSid(PWSTR* ppszSid) override;
+
+    // ICredentialProviderCredentialWithFieldOptions
+    IFACEMETHODIMP GetFieldOptions(DWORD dwFieldID, CREDENTIAL_PROVIDER_CREDENTIAL_FIELD_OPTIONS* pOptions) override;
 
     // Static Field Descriptors Table
     static const CREDENTIAL_PROVIDER_FIELD_DESCRIPTOR s_FieldDescriptors[FIELD_COUNT];

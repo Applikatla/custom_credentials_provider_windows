@@ -1,6 +1,11 @@
 #pragma once
 
+#ifndef SECURITY_WIN32
+#define SECURITY_WIN32
+#endif
+
 #include "common.h"
+#include <security.h>
 #include <ntsecapi.h>
 #include <string>
 

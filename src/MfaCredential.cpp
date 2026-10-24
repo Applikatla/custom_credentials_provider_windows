@@ -9,7 +9,7 @@ const CREDENTIAL_PROVIDER_FIELD_DESCRIPTOR MfaCredential::s_FieldDescriptors[FIE
     { FIELD_LABEL,        CPFT_LARGE_TEXT,    L"MFA Login",        CPFG_LOGON_PASSWORD },
     { FIELD_USERNAME,     CPFT_EDIT_TEXT,     L"Username",         CPFG_LOGON_PASSWORD },
     { FIELD_PASSWORD,     CPFT_PASSWORD_TEXT, L"Password",         CPFG_LOGON_PASSWORD },
-    { FIELD_MFA_METHOD,   CPFT_COMBO_BOX,     L"MFA Method",       CPFG_LOGON_PASSWORD },
+    { FIELD_MFA_METHOD,   CPFT_COMBOBOX,      L"MFA Method",       CPFG_LOGON_PASSWORD },
     { FIELD_MFA_PAYLOAD,  CPFT_EDIT_TEXT,     L"Code / PIN",       CPFG_LOGON_PASSWORD },
     { FIELD_STATUS_TEXT,  CPFT_SMALL_TEXT,    L"Status",           CPFG_LOGON_PASSWORD },
     { FIELD_SUBMIT_BUTTON,CPFT_SUBMIT_BUTTON, L"Submit",           CPFG_LOGON_PASSWORD },
@@ -49,6 +49,8 @@ HRESULT MfaCredential::QueryInterface(REFIID riid, void** ppv) {
         *ppv = static_cast<ICredentialProviderCredential*>(this);
     } else if (riid == IID_ICredentialProviderCredential2) {
         *ppv = static_cast<ICredentialProviderCredential2*>(this);
+    } else if (riid == IID_ICredentialProviderCredentialWithFieldOptions) {
+        *ppv = static_cast<ICredentialProviderCredentialWithFieldOptions*>(this);
     } else {
         return E_NOINTERFACE;
     }
@@ -292,7 +294,7 @@ HRESULT MfaCredential::GetFieldOptions(DWORD dwFieldID, CREDENTIAL_PROVIDER_CRED
     *pOptions = CPCFO_NONE;
 
     if (dwFieldID == FIELD_PASSWORD) {
-        *pOptions = CPCFO_PASSWORD_KEYS;
+        *pOptions = CPCFO_ENABLE_PASSWORD_REVEAL;
     }
     return S_OK;
 }

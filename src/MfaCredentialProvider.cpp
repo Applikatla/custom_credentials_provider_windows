@@ -55,8 +55,8 @@ HRESULT MfaCredentialProvider::QueryInterface(REFIID riid, void** ppv) {
 
     if (riid == IID_IUnknown || riid == IID_ICredentialProvider) {
         *ppv = static_cast<ICredentialProvider*>(this);
-    } else if (riid == IID_ICredentialProvider2) {
-        *ppv = static_cast<ICredentialProvider2*>(this);
+    } else if (riid == IID_ICredentialProviderSetUserArray) {
+        *ppv = static_cast<ICredentialProviderSetUserArray*>(this);
     } else {
         return E_NOINTERFACE;
     }

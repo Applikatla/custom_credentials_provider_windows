@@ -54,14 +54,19 @@ if(WIN32)
     # Safe Desktop Test Harness (Step 6) using CredUI
     add_executable(MfaTestHarness
         tools/TestHarness.cpp
+        src/LsaHelper.cpp
         include/guid.h
         include/IpcProtocol.h
     )
     target_link_libraries(MfaTestHarness PRIVATE
+        MfaIpc
         Credui
         Secur32
         Ole32
         Advapi32
+        User32
+        Gdi32
+        Comctl32
     )
 
     # Enable Unicode & disable deprecation warnings for Windows strings
